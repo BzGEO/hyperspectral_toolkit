@@ -1,0 +1,7 @@
+cff-version: 1.1.0
+message: "If you use this software, please cite it as below."
+authors: Emil A. Cherrington
+orcid: https://orcid.org/0000-0003-0524-4744
+title:bzgeo/hyperspectral_toolkit: v.1.0.0.1
+version: v_1_0_0_1
+date-released: 2025-07-06
