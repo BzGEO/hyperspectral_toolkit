@@ -1,2 +1,15 @@
-# hyperspectral_toolkit
-A repository of Google Earth Engine (GEE) JavaScript code for tools for working with various hyperspectral datasets (e.g., AVIRIS, EMIT, Hyperion, PACE OCI)
+# Hyperspectral Data Toolkit
+**Summary:** This is a repository of [Google Earth Engine (GEE)](https://code.earthengine.google.com) JavaScript code for tools for working with various hyperspectral *open* datasets from NASA (e.g., AVIRIS, EMIT, Hyperion, PACE OCI). One of the dependency packages included in this toolkit provides data on the hyperspectral wavelengths for NASA various spaceborne hyperspectral imagers, namely [EO-1 Hyperion](https://developers.google.com/earth-engine/datasets/catalog/EO1_HYPERION), the ISS [EMIT](https://developers.google.com/earth-engine/datasets/catalog/NASA_EMIT_L2A_RFL), and [PACE OCI](https://pace.oceansciences.org/oci.htm). Another dependency provides access to PACE OCI land data. Aside from the dependencies, example scripts are provided to allow users to interact with the data, and the geographic and temporal scopes of those examples can be modified to meet users' needs. The scripts are divided into the following main functions: (i) data discovery, (ii) data visualization, (iii) spectral signature visualization, (iv) data gap filling, (v) time series analysis, and (vi) image classification.  *Please note* that this repository is a successor, as well as an add-on to the PACE OCI hyperspectral toolkit available at https://github.com/bzgeo/pace_oci_toolkit.
+
+# Notes
+1. To add the code repository directly to your GEE account, use the following *bit.ly* link: .
+2. More information on PACE OCI hyperspectral data: https://pace.oceansciences.org/data_table.htm
+3. More information on ISS EMIT data available in GEE: https://developers.google.com/earth-engine/datasets/catalog/NASA_EMIT_L2A_RFL
+4. More information on EO-1 Hyperion data available in GEE: https://developers.google.com/earth-engine/datasets/catalog/EO1_HYPERION
+5. More information on AVIRIS-NG data available in GEE: https://developers.google.com/earth-engine/datasets/catalog/projects_neon-prod-earthengine_assets_HSI_REFL_002
+
+# Context
+This work builds off of the [PACE OCI hyperspectral toolkit](https://github.com/bzgeo/pace_oci_toolkit), which was [soft-launched](https://bit.ly/sbg_tim_2025_pace_tk) at the virtual [Technical Interchange Meeting](https://sbg.jpl.nasa.gov/news-events/sbg-sa-tim-2025) of NASA's [Surface Biology and Geology (SBG)](https://sbg.jpl.nasa.gov/) mission. This work is being led by researchers from the [Lab for Applied Science](https://www.uah.edu/essc/laboratory-for-applied-science) of the [Earth System Science Center](https://www.uah.edu/essc) of the [University of Alabama in Huntsville](https://www.uah.edu/) and has been supported by the [SERVIR](https://science.nasa.gov/category/missions/servir/) Science Coordination Office at the [NASA](https://www.nasa.gov) [Marshall Space Flight Center](https://www.nasa.gov/marshall/). The initial work was being done in the context of an [Early Adopters project](https://pace.oceansciences.org/people_ea.htm?id=127) for PACE. Kudos are due to Dr. Morgaine McKibben (NASA / SSAI), Skye Caplan (NASA / SSAI), and Dr. K. Fred Huemmrich (NASA / UMBC) of the collective PACE team, Dr. Africa-Flores-Anderson (NASA MSFC) of the NASA SBG team, and to Kelsey Herndon (NASA / UAH), Eric Anderson (NASA MSFC), Dr. Kevin Horn (NASA MSFC), Dr. Ashutosh Limaye (NASA MSFC), and Dan Irwin (NASA MSFC) of the SERVIR Science Coordination Office.
+
+# About
+This text was last updated on 6 July 2025.
