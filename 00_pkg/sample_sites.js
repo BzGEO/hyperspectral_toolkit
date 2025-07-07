@@ -5,7 +5,7 @@
 // This supports the following GEE code repository: https://bit.ly/gee_repo_pace_oci.
 // Last updated: 06.05.2025
 
-// var x = require('users/bzgeo/hyperspectral_toolkit:00_pkg/sample_sites');
+// var x = require('users/bzgeo/hyperspectral_toolkit:00_pkg/sample_sites.js');
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

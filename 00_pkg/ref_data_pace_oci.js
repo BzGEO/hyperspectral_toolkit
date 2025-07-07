@@ -5,7 +5,7 @@
 // This is a part of the following GEE code repository: https://bit.ly/gee_repo_hyperspectral.
 // Last updated: 02.07.2025
 
-// var x = require('users/bzgeo/hyperspectral_toolkit:00_pkg/ref_data_pace_oci');
+// var x = require('users/bzgeo/hyperspectral_toolkit:00_pkg/ref_data_pace_oci.js');
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
