@@ -3,10 +3,10 @@
 
 ## Notes
 1. To add the code repository directly to your GEE account, use the following *bit.ly* link: https://bit.ly/gee_repo_hyperspectral.
-2. More information on PACE OCI hyperspectral data: https://pace.oceansciences.org/data_table.htm
-3. More information on ISS EMIT data available in GEE: https://developers.google.com/earth-engine/datasets/catalog/NASA_EMIT_L2A_RFL
-4. More information on EO-1 Hyperion data available in GEE: https://developers.google.com/earth-engine/datasets/catalog/EO1_HYPERION
-5. More information on AVIRIS-NG data available in GEE: https://developers.google.com/earth-engine/datasets/catalog/projects_neon-prod-earthengine_assets_HSI_REFL_002
+2. More info: PACE OCI hyperspectral data: https://pace.oceansciences.org/data_table.htm
+3. More info: ISS EMIT data available in GEE: https://developers.google.com/earth-engine/datasets/catalog/NASA_EMIT_L2A_RFL
+4. More info: EO-1 Hyperion data available in GEE: https://developers.google.com/earth-engine/datasets/catalog/EO1_HYPERION
+5. More info: AVIRIS-NG data available in GEE: https://developers.google.com/earth-engine/datasets/catalog/projects_neon-prod-earthengine_assets_HSI_REFL_002
 
 ## Context
 This work builds off of the [PACE OCI hyperspectral toolkit](https://github.com/bzgeo/pace_oci_toolkit), which was [soft-launched](https://bit.ly/sbg_tim_2025_pace_tk) at the virtual [Technical Interchange Meeting](https://sbg.jpl.nasa.gov/news-events/sbg-sa-tim-2025) of NASA's [Surface Biology and Geology (SBG)](https://sbg.jpl.nasa.gov/) mission. This work is being led by researchers from the [Lab for Applied Science](https://www.uah.edu/essc/laboratory-for-applied-science) of the [Earth System Science Center](https://www.uah.edu/essc) of the [University of Alabama in Huntsville](https://www.uah.edu/) and has been supported by [NASA](https://www.nasa.gov) Earth Action / NASA [Marshall Space Flight Center](https://www.nasa.gov/marshall/). The initial work was being done in the context of an [Early Adopters project](https://pace.oceansciences.org/people_ea.htm?id=127) for PACE. Kudos are due to Dr. Morgaine McKibben (NASA / SSAI), Skye Caplan (NASA / SSAI), and Dr. K. Fred Huemmrich (NASA / UMBC) of the collective PACE team, [Dr. Africa-Flores-Anderson](https://github.com/africaf) (NASA) of the SBG team, and to [Kelsey Herndon](https://github.com/herndk1) (NASA / UAH), [Eric Anderson](https://github.com/andersoner) (NASA), Dr. Kevin Horn (NASA), Dr. Ashutosh Limaye (NASA), and Dan Irwin (NASA) of NASA MSFC.
