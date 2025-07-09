@@ -1,3 +1,5 @@
+![Visitor Badge](https://visitor-badge.laobi.icu/badge?page_id=bzgeo.hyperspectral_toolkit)
+
 # the Hyperspectral Data Toolkit
 
 *last updated: 9 July 2025*
