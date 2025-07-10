@@ -1,8 +1,9 @@
-![Visitor Badge](https://visitor-badge.laobi.icu/badge?page_id=bzgeo.hyperspectral_toolkit)
-
 # the Hyperspectral Data Toolkit
 
 *last updated: 9 July 2025*
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15825295.svg)](https://doi.org/10.5281/zenodo.15825295)
+![Visitor Badge](https://visitor-badge.laobi.icu/badge?page_id=bzgeo.hyperspectral_toolkit)
 
 ## Summary
 This is a repository of [Google Earth Engine (GEE)](https://code.earthengine.google.com) JavaScript code for tools for working with various hyperspectral *open* datasets from NASA (e.g., AVIRIS, EMIT, Hyperion, PACE OCI). One of the dependency packages included in this toolkit provides data on the hyperspectral wavelengths for NASA various spaceborne hyperspectral imagers, namely [EO-1 Hyperion](https://developers.google.com/earth-engine/datasets/catalog/EO1_HYPERION), the ISS [EMIT](https://developers.google.com/earth-engine/datasets/catalog/NASA_EMIT_L2A_RFL), and [PACE OCI](https://pace.oceansciences.org/oci.htm) [whose products are *open data*]. Another dependency provides access to PACE OCI land data. Aside from the dependencies, example scripts are provided to allow users to interact with the data, and the geographic and temporal scopes of those examples can be modified to meet users' needs. The scripts are divided into the following main functions: (i) data discovery, (ii) data visualization, (iii) spectral signature visualization, (iv) data gap filling, (v) time series analysis, and (vi) image classification.  *Please note* that this repository is a successor, as well as an add-on to the PACE OCI hyperspectral toolkit available at https://github.com/bzgeo/pace_oci_toolkit.
