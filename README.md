@@ -1,6 +1,6 @@
 # the Hyperspectral Data Toolkit
 
-*last updated: 9 July 2025*
+*last updated: 10 July 2025*
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15825295.svg)](https://doi.org/10.5281/zenodo.15825295)
 ![Visitor Badge](https://visitor-badge.laobi.icu/badge?page_id=bzgeo.hyperspectral_toolkit)
@@ -28,4 +28,4 @@ Cherrington, E. (2025). Hyperspectral Data Toolkit (Version 1.0.0.1) [Computer s
 
 ## Contact information
 
-If you have any questions, feel free to contact Emil Cherrington by email: **emil.cherrington [at] uah.edu**.
+If you have any questions, feel free to contact Emil Cherrington by :envelope_with_arrow: email: **emil.cherrington [at] uah.edu**.
