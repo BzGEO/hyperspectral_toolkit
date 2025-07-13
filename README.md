@@ -1,6 +1,6 @@
 # the Hyperspectral Data Toolkit
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15825295.svg)](https://doi.org/10.5281/zenodo.15825295)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15873992.svg)](https://doi.org/10.5281/zenodo.15873992)
 [![Update](https://img.shields.io/github/last-commit/bzgeo/hyperspectral_toolkit?label=repo%20last%20updated&style=flat-square)](https://github.com/BzGEO/hyperspectral_toolkit/tree/main)
 ![Visitor badge](https://visitor-badge.laobi.icu/badge?page_id=bzgeo.hyperspectral_toolkit)
 
@@ -30,9 +30,9 @@ This work builds off of the [PACE OCI hyperspectral toolkit](https://github.com/
 
 If this toolkit is used in publications, presentations, or other venues, please cite 📝 the following:
 
-Cherrington, E. (2025). Hyperspectral Data Toolkit (Version 1.0.0.1) [Computer software]. https://doi.org/10.5281/zenodo.15825295
+Cherrington, E. (2025). Hyperspectral Data Toolkit (Version 1.0.0.1) [Computer software]. https://doi.org/10.5281/zenodo.15873992
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15825295.svg)](https://doi.org/10.5281/zenodo.15825295)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15873992.svg)](https://doi.org/10.5281/zenodo.15873992)
 
 ## Contact information
 
