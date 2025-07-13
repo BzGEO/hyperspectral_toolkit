@@ -12,6 +12,8 @@ This is a repository of [Google Earth Engine 🌎 (GEE)](https://code.earthengin
 ## Functions
 The scripts are divided into the following main functions: *(i) data discovery, (ii) data visualization, (iii) spectral signature visualization, (iv) data gap filling, (v) time series analysis, and (vi) image classification.*
 
+![](https://github.com/BzGEO/hyperspectral_toolkit/blob/main/_graphics/hyperspectral_gee_toolkit_structure_2025-07-13.PNG)
+
 ## 📢 Add this repo to Google Earth Engine 📢
 To add the code repository 💾 directly to your GEE account, use the following *bit.ly* 🔗: https://bit.ly/gee_repo_hyperspectral.
 
