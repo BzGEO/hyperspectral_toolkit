@@ -6,6 +6,6 @@ authors:
   orcid: "https://orcid.org/0000-0003-0524-4744"
 title: "Hyperspectral Data Toolkit"
 version: 1.0.0.1
-doi: 10.5281/zenodo.15825295
-date-released: 2025-07-06
+doi: 10.5281/zenodo.15873992
+date-released: 2025-07-13
 url: "https://github.com/bzgeo/hyperspectral_toolkit"
