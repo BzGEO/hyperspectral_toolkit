@@ -3,9 +3,13 @@
 // Loads reference PACE OCI data (surface reflectance data, land vegetation indices)
 // Questions? Contact Emil A. Cherrington, Ph.D. (eac0021@uah.edu)
 // This is a part of the following GEE code repository: https://bit.ly/gee_repo_hyperspectral.
-// Last updated: 02.07.2025
+// Last updated: 23.07.2025
 
 // var x = require('users/bzgeo/hyperspectral_toolkit:00_pkg/ref_data_pace_oci.js');
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+var a = require('users/bzgeo/hyperspectral_toolkit:00_pkg/emit_hyperion_pace.js'); // Load various relevant functions
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -16,6 +20,32 @@ var t = 'system:time_start'; // simplifies time variable for functions below
 // SURFACE REFLECTANCE DATA
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// DOMAIN: CONTINENTAL USA (CONUS) | SPATIAL RES: 1.2 KM | TEMPORAL RES: DAILY
+
+var pace_oci_conus_west_20240622 = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_sr/conus_01km/conus_west_pace_oci_sr_v3_20240622");
+var pace_oci_conus_west_20240711 = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_sr/conus_01km/conus_west_pace_oci_sr_v3_20240711");
+var pace_oci_conus_west_20240828 = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_sr/conus_01km/conus_west_pace_oci_sr_v3_20240828");
+var pace_oci_conus_west_20250523 = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_sr/conus_01km/conus_west_pace_oci_sr_v3_20250523");
+
+exports.pace_oci_conus_west_20240622 = pace_oci_conus_west_20240622;
+exports.pace_oci_conus_west_20240711 = pace_oci_conus_west_20240711;
+exports.pace_oci_conus_west_20240828 = pace_oci_conus_west_20240828;
+exports.pace_oci_conus_west_20250523 = pace_oci_conus_west_20250523;
+
+/*
+var pace_oci_1d_conus_west = ee.ImageCollection.fromImages([pace_oci_conus_west_20240622,pace_oci_conus_west_20240711,
+                                                    pace_oci_conus_west_20240828, pace_oci_conus_west_20250523])
+                                                    .map(function(img){return img.updateMask(img.gte(0)).set(t,img.get(t))});
+*/
+
+var pace_oci_1d_conus_west = ee.ImageCollection.fromImages([pace_oci_conus_west_20240622,pace_oci_conus_west_20250523])
+                                                    .map(function(img){return img.updateMask(img.gte(0)).set(t,img.get(t))});
+
+exports.pace_oci_1d_conus_west = pace_oci_1d_conus_west;
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 // DOMAIN: CONTINENTAL USA (CONUS) | SPATIAL RES: 4 KM  | TEMPORAL RES: MONTHLY
 
@@ -201,6 +231,11 @@ var pace_oci_mt_global = ee.ImageCollection.fromImages([pace_oci_mt_global_20240
                                                     .map(function(img){return img.updateMask(img.gte(0)).reproject('EPSG:4326', null, 10000).set(t,img.get(t))});
 exports.pace_oci_mt_global = pace_oci_mt_global;
 
+//
+var pace_oci_mt_global0 = pace_oci_mt_global.map(function(img){return img.select(a.bands_oci_orig,a.bands_oci_mod)});
+exports.pace_oci_mt_global0 = pace_oci_mt_global0;
+
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // LAND VEGETATION INDICES
@@ -211,13 +246,13 @@ exports.pace_oci_mt_global = pace_oci_mt_global;
 
 var coll_vi = function(img) {
 
-var ndvi = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_01_ndvi_b60_4km"),
-    evi = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_02_evi_b60_4km"),
-    cci = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_05_cci_b60_4km"),
-    cire = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_07_cire_b60_4km"),
-    car = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_08_car_b60_4km"),
-    mari = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_09_mari_b60_4km"),
-    pri = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_10_pri_b60_4km");
+var ndvi = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_01_ndvi_b63_4km"),
+    evi = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_02_evi_b63_4km"),
+    cci = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_05_cci_b63_4km"),
+    cire = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_07_cire_b63_4km"),
+    car = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_08_car_b63_4km"),
+    mari = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_09_mari_b63_4km"),
+    pri = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_10_pri_b63_4km");
 
 ndvi = ndvi.updateMask(ndvi.gte(-10000));
 evi = evi.updateMask(evi.gte(-10000));
@@ -287,12 +322,12 @@ var vi57 = ee.Image.cat(ndvi.select([56]),evi.select([56]),cci.select([56]),cire
 var vi58 = ee.Image.cat(ndvi.select([57]),evi.select([57]),cci.select([57]),cire.select([57]),car.select([57]),mari.select([57]),pri.select([57])).rename('ndvi','evi','cci','cire','car','mari','pri').set(t,ee.Date.fromYMD(2025,6,9).millis());
 var vi59 = ee.Image.cat(ndvi.select([58]),evi.select([58]),cci.select([58]),cire.select([58]),car.select([58]),mari.select([58]),pri.select([58])).rename('ndvi','evi','cci','cire','car','mari','pri').set(t,ee.Date.fromYMD(2025,6,17).millis());
 var vi60 = ee.Image.cat(ndvi.select([59]),evi.select([59]),cci.select([59]),cire.select([59]),car.select([59]),mari.select([59]),pri.select([59])).rename('ndvi','evi','cci','cire','car','mari','pri').set(t,ee.Date.fromYMD(2025,6,25).millis());
-
-
-/*
 var vi61 = ee.Image.cat(ndvi.select([60]),evi.select([60]),cci.select([60]),cire.select([60]),car.select([60]),mari.select([60]),pri.select([60])).rename('ndvi','evi','cci','cire','car','mari','pri').set(t,ee.Date.fromYMD(2025,7,3).millis());
 var vi62 = ee.Image.cat(ndvi.select([61]),evi.select([61]),cci.select([61]),cire.select([61]),car.select([61]),mari.select([61]),pri.select([61])).rename('ndvi','evi','cci','cire','car','mari','pri').set(t,ee.Date.fromYMD(2025,7,11).millis());
 var vi63 = ee.Image.cat(ndvi.select([62]),evi.select([62]),cci.select([62]),cire.select([62]),car.select([62]),mari.select([62]),pri.select([62])).rename('ndvi','evi','cci','cire','car','mari','pri').set(t,ee.Date.fromYMD(2025,7,19).millis());
+
+
+/*
 var vi64 = ee.Image.cat(ndvi.select([63]),evi.select([63]),cci.select([63]),cire.select([63]),car.select([63]),mari.select([63]),pri.select([63])).rename('ndvi','evi','cci','cire','car','mari','pri').set(t,ee.Date.fromYMD(2025,7,27).millis());
 var vi65 = ee.Image.cat(ndvi.select([64]),evi.select([64]),cci.select([64]),cire.select([64]),car.select([64]),mari.select([64]),pri.select([64])).rename('ndvi','evi','cci','cire','car','mari','pri').set(t,ee.Date.fromYMD(2025,8,4).millis());
 var vi66 = ee.Image.cat(ndvi.select([65]),evi.select([65]),cci.select([65]),cire.select([65]),car.select([65]),mari.select([65]),pri.select([65])).rename('ndvi','evi','cci','cire','car','mari','pri').set(t,ee.Date.fromYMD(2025,8,12).millis());
@@ -325,10 +360,10 @@ vi11,vi12,vi13,vi14,vi15,vi16,vi17,vi18,vi19,vi20,
 vi21,vi22,vi23,vi24,vi25,vi26,vi27,vi28,vi29,vi30,
 vi31,vi32,vi33,vi34,vi35,vi36,vi37,vi38,vi39,vi40,
 vi41,vi42,vi43,vi44,vi45,vi46,vi47,vi48,vi49,vi50,
-vi51,vi52,vi53,vi54,vi55,vi56,vi57,vi58,vi59,vi60
+vi51,vi52,vi53,vi54,vi55,vi56,vi57,vi58,vi59,vi60,
+vi61,vi62,vi63
 /*
-,vi61,
-vi62,vi63,vi64,vi65,vi66,vi67,vi68,vi69,vi70,
+,vi64,vi65,vi66,vi67,vi68,vi69,vi70,
 vi71,vi72,vi73,vi74,vi75,vi76,vi77,vi78,vi79,vi80,
 vi81,vi82,vi83,vi84
 */
@@ -410,12 +445,12 @@ var vi57 = ee.Image.cat(img.select([56])).rename('vi').set(t,ee.Date.fromYMD(202
 var vi58 = ee.Image.cat(img.select([57])).rename('vi').set(t,ee.Date.fromYMD(2025,6,9).millis());
 var vi59 = ee.Image.cat(img.select([58])).rename('vi').set(t,ee.Date.fromYMD(2025,6,17).millis());
 var vi60 = ee.Image.cat(img.select([59])).rename('vi').set(t,ee.Date.fromYMD(2025,6,25).millis());
-
-
-/*
 var vi61 = ee.Image.cat(img.select([60])).rename('vi').set(t,ee.Date.fromYMD(2025,7,3).millis());
 var vi62 = ee.Image.cat(img.select([61])).rename('vi').set(t,ee.Date.fromYMD(2025,7,11).millis());
 var vi63 = ee.Image.cat(img.select([62])).rename('vi').set(t,ee.Date.fromYMD(2025,7,19).millis());
+
+/*
+
 var vi64 = ee.Image.cat(img.select([63])).rename('vi').set(t,ee.Date.fromYMD(2025,7,27).millis());
 var vi65 = ee.Image.cat(img.select([64])).rename('vi').set(t,ee.Date.fromYMD(2025,8,4).millis());
 var vi66 = ee.Image.cat(img.select([65])).rename('vi').set(t,ee.Date.fromYMD(2025,8,12).millis());
@@ -445,10 +480,11 @@ vi11,vi12,vi13,vi14,vi15,vi16,vi17,vi18,vi19,vi20,
 vi21,vi22,vi23,vi24,vi25,vi26,vi27,vi28,vi29,vi30,
 vi31,vi32,vi33,vi34,vi35,vi36,vi37,vi38,vi39,vi40,
 vi41,vi42,vi43,vi44,vi45,vi46,vi47,vi48,vi49,vi50,
-vi51,vi52,vi53,vi54,vi55,vi56,vi57,vi58,vi59,vi60
+vi51,vi52,vi53,vi54,vi55,vi56,vi57,vi58,vi59,vi60,
+vi61,vi62,vi63
+
 /*
-,vi61,
-vi62,vi63,vi64,vi65,vi66,vi67,vi68,vi69,vi70,
+,vi64,vi65,vi66,vi67,vi68,vi69,vi70,
 vi71,vi72,vi73,vi74,vi75,vi76,vi77,vi78,vi79,vi80,
 vi81,vi82,vi83,vi84
 */
@@ -462,13 +498,13 @@ vi81,vi82,vi83,vi84
 
 // DATA AS SINGLE IMAGES
 
-var pace_oci_global_ndvi = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_01_ndvi_b60_4km"),
-    pace_oci_global_evi = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_02_evi_b60_4km"),
-    pace_oci_global_cci = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_05_cci_b60_4km"),
-    pace_oci_global_cire = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_07_cire_b60_4km"),
-    pace_oci_global_car = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_08_car_b60_4km"),
-    pace_oci_global_mari = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_09_mari_b60_4km"),
-    pace_oci_global_pri = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_10_pri_b60_4km");
+var pace_oci_global_ndvi = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_01_ndvi_b63_4km"),
+    pace_oci_global_evi = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_02_evi_b63_4km"),
+    pace_oci_global_cci = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_05_cci_b63_4km"),
+    pace_oci_global_cire = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_07_cire_b63_4km"),
+    pace_oci_global_car = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_08_car_b63_4km"),
+    pace_oci_global_mari = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_09_mari_b63_4km"),
+    pace_oci_global_pri = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_10_pri_b63_4km");
 
 pace_oci_global_ndvi = pace_oci_global_ndvi.updateMask(pace_oci_global_ndvi.gte(-10000));
 pace_oci_global_evi = pace_oci_global_evi.updateMask(pace_oci_global_evi.gte(-10000));
@@ -548,7 +584,7 @@ var pace_oci_mt_vi_202502 = ee.Image('projects/bz-sdg/compil_imagery/hyperspectr
 var pace_oci_mt_vi_202503 = ee.Image('projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/monthly/PACE_OCI_202503_L3m_MO_LANDVI_V3').set(t,ee.Date.fromYMD(2025,3,31).millis());
 var pace_oci_mt_vi_202504 = ee.Image('projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/monthly/PACE_OCI_202504_L3m_MO_LANDVI_V3').set(t,ee.Date.fromYMD(2025,4,30).millis());
 var pace_oci_mt_vi_202505 = ee.Image('projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/monthly/PACE_OCI_202505x_L3m_MO_LANDVI_V3').set(t,ee.Date.fromYMD(2025,5,31).millis());
-
+var pace_oci_mt_vi_202506 = ee.Image('projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/monthly/PACE_OCI_202506x_L3m_MO_LANDVI_V3').set(t,ee.Date.fromYMD(2025,6,30).millis());
 
 exports.pace_oci_mt_vi_202403 = pace_oci_mt_vi_202403;
 exports.pace_oci_mt_vi_202404 = pace_oci_mt_vi_202404;
@@ -565,12 +601,14 @@ exports.pace_oci_mt_vi_202502 = pace_oci_mt_vi_202502;
 exports.pace_oci_mt_vi_202503 = pace_oci_mt_vi_202503;
 exports.pace_oci_mt_vi_202504 = pace_oci_mt_vi_202504;
 exports.pace_oci_mt_vi_202505 = pace_oci_mt_vi_202505;
+exports.pace_oci_mt_vi_202506 = pace_oci_mt_vi_202506;
 
 //
 var pace_oci_mt_global_vi = ee.ImageCollection.fromImages([
 pace_oci_mt_vi_202403,pace_oci_mt_vi_202404,pace_oci_mt_vi_202405,pace_oci_mt_vi_202406,pace_oci_mt_vi_202407,
 pace_oci_mt_vi_202408,pace_oci_mt_vi_202409,pace_oci_mt_vi_202410,pace_oci_mt_vi_202411,pace_oci_mt_vi_202412,
-pace_oci_mt_vi_202501,pace_oci_mt_vi_202502,pace_oci_mt_vi_202503,pace_oci_mt_vi_202504,pace_oci_mt_vi_202505])
+pace_oci_mt_vi_202501,pace_oci_mt_vi_202502,pace_oci_mt_vi_202503,pace_oci_mt_vi_202504,pace_oci_mt_vi_202505,
+pace_oci_mt_vi_202506])
 .map(function(img){return img.updateMask(img.gte(-1)).multiply(10000).rename(["ndvi","evi","ndwi","ndii","cci","ndsi","pri","cire","car","mari"]).set(t,img.get(t));
 });
 
@@ -586,6 +624,19 @@ var mcd64a1_202403_202503 = mcd64a1.select('BurnDate').filter(ee.Filter.date('20
 var mcd64a1_202403_202504 = mcd64a1.select('BurnDate').filter(ee.Filter.date('2024-03-01', '2025-04-30'));
 var mcd64a1_202403_202505 = mcd64a1.select('BurnDate').filter(ee.Filter.date('2024-03-01', '2025-05-31'));
 
+var mcd64a1_2021 = mcd64a1.select('BurnDate').filter(ee.Filter.date('2021-01-01', '2021-12-31')).median();
+var mcd64a1_2022 = mcd64a1.select('BurnDate').filter(ee.Filter.date('2022-01-01', '2022-12-31')).median();
+var mcd64a1_2023 = mcd64a1.select('BurnDate').filter(ee.Filter.date('2023-01-01', '2023-12-31')).median();
+var mcd64a1_2024 = mcd64a1.select('BurnDate').filter(ee.Filter.date('2024-01-01', '2024-12-31')).median();
+var mcd64a1_2025 = mcd64a1.select('BurnDate').filter(ee.Filter.date('2025-01-01', '2025-12-31')).median();
+
+exports.mcd64a1_2021 = mcd64a1_2021;
+exports.mcd64a1_2022 = mcd64a1_2022;
+exports.mcd64a1_2023 = mcd64a1_2023;
+exports.mcd64a1_2024 = mcd64a1_2024;
+exports.mcd64a1_2025 = mcd64a1_2025;
+
+
 exports.mcd64a1 = mcd64a1;
 exports.mcd64a1_202403_202503 = mcd64a1_202403_202503;
 exports.mcd64a1_202403_202504 = mcd64a1_202403_202504;
@@ -593,6 +644,27 @@ exports.mcd64a1_202403_202505 = mcd64a1_202403_202505;
 
 var viz_mcd64a1 = {min:1, max: 365, palette: ['red']};
 exports.viz_mcd64a1 = viz_mcd64a1;
+
+var vnp64a1 = ee.ImageCollection('NOAA/VIIRS/001/VNP64A1');
+var vnp64a1_2021 = vnp64a1.select('BurnDate').filter(ee.Filter.date('2021-01-01', '2021-12-31'));
+var vnp64a1_2022 = vnp64a1.select('BurnDate').filter(ee.Filter.date('2022-01-01', '2022-12-31'));
+var vnp64a1_2023 = vnp64a1.select('BurnDate').filter(ee.Filter.date('2023-01-01', '2023-12-31'));
+var vnp64a1_2024 = vnp64a1.select('BurnDate').filter(ee.Filter.date('2024-01-01', '2024-12-31'));
+var vnp64a1_2025 = vnp64a1.select('BurnDate').filter(ee.Filter.date('2025-01-01', '2025-12-31'));
+
+exports.vnp64a1 = vnp64a1;
+exports.vnp64a1_2021 = vnp64a1_2021;
+exports.vnp64a1_2022 = vnp64a1_2022;
+exports.vnp64a1_2023 = vnp64a1_2023;
+exports.vnp64a1_2024 = vnp64a1_2024;
+exports.vnp64a1_2025 = vnp64a1_2025;
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function fire(img, roi) {return img.toInt8().reduceToVectors({
+geometry: roi, scale: 500, geometryType: 'polygon', eightConnected: false})}
+
+exports.fire = fire;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

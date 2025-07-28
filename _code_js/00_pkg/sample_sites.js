@@ -3,9 +3,18 @@
 // Sample site locations for use with hyperspectral data
 // Questions? Contact Emil A. Cherrington, Ph.D. (eac0021@uah.edu)
 // This supports the following GEE code repository: https://bit.ly/gee_repo_pace_oci.
-// Last updated: 06.05.2025
+// Last updated: 20.07.2025
 
 // var x = require('users/bzgeo/hyperspectral_toolkit:00_pkg/sample_sites.js');
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Functions for creating hollow polygons
+var ln1 = function(roi) {return ee.Image().byte().paint({featureCollection:roi,width:1})};
+var ln2 = function(roi) {return ee.Image().byte().paint({featureCollection:roi,width:2})};
+
+exports.ln1 = ln1;
+exports.ln2 = ln2;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -129,6 +138,48 @@ var us_al_hsv_pts = ee.FeatureCollection([
   ]);
 
 exports.us_al_hsv_pts = us_al_hsv_pts;
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// California Park Fire sites (the fire occurred in late July / early August 2024)
+
+var pt_for =    ee.Geometry.Point([-121.66626, 40.06356]); // eastern vegetated side
+var pt_mt =     ee.Geometry.Point([-121.81767, 40.06343]); // western scrubby side
+
+var ca_lc = ee.FeatureCollection([ee.Feature(pt_for, {label: 'Vegetated', class: 1}), ee.Feature(pt_mt, {label: 'Non-vegetated', class: 2})]);
+
+var ca_for = ee.Geometry.Polygon(
+        [[[-121.67132698364257, 40.068681530028066],[-121.67132698364257, 40.05771142879132],
+          [-121.66068397827148, 40.05771142879132],[-121.66068397827148, 40.068681530028066]]], null, false);
+var ca_mt = ee.Geometry.Polygon(
+        [[[-121.82238899536132, 40.06815605647857],[-121.82238899536132, 40.05764573424222],
+          [-121.81123100585937, 40.05764573424222],[-121.81123100585937, 40.06815605647857]]], null, false);
+
+var ca_sites = ee.FeatureCollection([
+  ee.Feature(ca_for, {label: 'Vegetated_site', class: 1}),
+  ee.Feature(ca_mt, {label: 'Non-vegetated_site', class: 2}),
+  ]);
+
+var ca_for_ln2 = ln2(ca_for);
+var ca_mt_ln2 = ln2(ca_mt);
+
+exports.pt_for = pt_for;
+exports.pt_mt = pt_mt;
+
+exports.ca_for = ca_for;
+exports.ca_mt = ca_mt;
+
+exports.ca_lc = ca_lc;
+exports.ca_sites = ca_sites;
+
+exports.ca_for_ln2 = ca_for_ln2;
+exports.ca_mt_ln2 = ca_mt_ln2;
+
+var roi_ca_snp = ee.Geometry.Polygon(
+        [[[-118.9543678424124, 36.695221212153854],  [-118.9543678424124, 35.657671454644564],
+          [-118.47920915100615, 35.657671454644564], [-118.47920915100615, 36.695221212153854]]], null, false);
+
+exports.roi_ca_snp = roi_ca_snp;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
