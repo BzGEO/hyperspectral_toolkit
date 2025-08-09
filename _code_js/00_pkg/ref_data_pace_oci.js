@@ -3,7 +3,7 @@
 // Loads reference PACE OCI data (surface reflectance data, land vegetation indices)
 // Questions? Contact Emil A. Cherrington, Ph.D. (eac0021@uah.edu)
 // This is a part of the following GEE code repository: https://bit.ly/gee_repo_hyperspectral.
-// Last updated: 23.07.2025
+// Last updated: 07.08.2025
 
 // var x = require('users/bzgeo/hyperspectral_toolkit:00_pkg/ref_data_pace_oci.js');
 
@@ -242,17 +242,17 @@ exports.pace_oci_mt_global0 = pace_oci_mt_global0;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// THIS FUNCTION CREATES AN IMAGE COLLECTION FROM THE 8-DAY PACE LAND VI DATA. IT NEEDS TO BE CONSTANTLY UPDATED; last updated: 30.06.2025.
+// THIS FUNCTION CREATES AN IMAGE COLLECTION FROM THE 8-DAY PACE LAND VI DATA. IT NEEDS TO BE CONSTANTLY UPDATED; last updated: 07.08.2025.
 
 var coll_vi = function(img) {
 
-var ndvi = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_01_ndvi_b63_4km"),
-    evi = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_02_evi_b63_4km"),
-    cci = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_05_cci_b63_4km"),
-    cire = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_07_cire_b63_4km"),
-    car = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_08_car_b63_4km"),
-    mari = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_09_mari_b63_4km"),
-    pri = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_10_pri_b63_4km");
+var ndvi = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_01_ndvi_b65_4km"),
+    evi = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_02_evi_b65_4km"),
+    cci = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_05_cci_b65_4km"),
+    cire = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_07_cire_b65_4km"),
+    car = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_08_car_b65_4km"),
+    mari = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_09_mari_b65_4km"),
+    pri = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_10_pri_b65_4km");
 
 ndvi = ndvi.updateMask(ndvi.gte(-10000));
 evi = evi.updateMask(evi.gte(-10000));
@@ -325,11 +325,10 @@ var vi60 = ee.Image.cat(ndvi.select([59]),evi.select([59]),cci.select([59]),cire
 var vi61 = ee.Image.cat(ndvi.select([60]),evi.select([60]),cci.select([60]),cire.select([60]),car.select([60]),mari.select([60]),pri.select([60])).rename('ndvi','evi','cci','cire','car','mari','pri').set(t,ee.Date.fromYMD(2025,7,3).millis());
 var vi62 = ee.Image.cat(ndvi.select([61]),evi.select([61]),cci.select([61]),cire.select([61]),car.select([61]),mari.select([61]),pri.select([61])).rename('ndvi','evi','cci','cire','car','mari','pri').set(t,ee.Date.fromYMD(2025,7,11).millis());
 var vi63 = ee.Image.cat(ndvi.select([62]),evi.select([62]),cci.select([62]),cire.select([62]),car.select([62]),mari.select([62]),pri.select([62])).rename('ndvi','evi','cci','cire','car','mari','pri').set(t,ee.Date.fromYMD(2025,7,19).millis());
-
-
-/*
 var vi64 = ee.Image.cat(ndvi.select([63]),evi.select([63]),cci.select([63]),cire.select([63]),car.select([63]),mari.select([63]),pri.select([63])).rename('ndvi','evi','cci','cire','car','mari','pri').set(t,ee.Date.fromYMD(2025,7,27).millis());
 var vi65 = ee.Image.cat(ndvi.select([64]),evi.select([64]),cci.select([64]),cire.select([64]),car.select([64]),mari.select([64]),pri.select([64])).rename('ndvi','evi','cci','cire','car','mari','pri').set(t,ee.Date.fromYMD(2025,8,4).millis());
+
+/*
 var vi66 = ee.Image.cat(ndvi.select([65]),evi.select([65]),cci.select([65]),cire.select([65]),car.select([65]),mari.select([65]),pri.select([65])).rename('ndvi','evi','cci','cire','car','mari','pri').set(t,ee.Date.fromYMD(2025,8,12).millis());
 var vi67 = ee.Image.cat(ndvi.select([66]),evi.select([66]),cci.select([66]),cire.select([66]),car.select([66]),mari.select([66]),pri.select([66])).rename('ndvi','evi','cci','cire','car','mari','pri').set(t,ee.Date.fromYMD(2025,8,20).millis());
 var vi68 = ee.Image.cat(ndvi.select([67]),evi.select([67]),cci.select([67]),cire.select([67]),car.select([67]),mari.select([67]),pri.select([67])).rename('ndvi','evi','cci','cire','car','mari','pri').set(t,ee.Date.fromYMD(2025,8,28).millis());
@@ -361,9 +360,10 @@ vi21,vi22,vi23,vi24,vi25,vi26,vi27,vi28,vi29,vi30,
 vi31,vi32,vi33,vi34,vi35,vi36,vi37,vi38,vi39,vi40,
 vi41,vi42,vi43,vi44,vi45,vi46,vi47,vi48,vi49,vi50,
 vi51,vi52,vi53,vi54,vi55,vi56,vi57,vi58,vi59,vi60,
-vi61,vi62,vi63
+vi61,vi62,vi63,vi64,vi65
+
 /*
-,vi64,vi65,vi66,vi67,vi68,vi69,vi70,
+,vi66,vi67,vi68,vi69,vi70,
 vi71,vi72,vi73,vi74,vi75,vi76,vi77,vi78,vi79,vi80,
 vi81,vi82,vi83,vi84
 */
@@ -448,11 +448,11 @@ var vi60 = ee.Image.cat(img.select([59])).rename('vi').set(t,ee.Date.fromYMD(202
 var vi61 = ee.Image.cat(img.select([60])).rename('vi').set(t,ee.Date.fromYMD(2025,7,3).millis());
 var vi62 = ee.Image.cat(img.select([61])).rename('vi').set(t,ee.Date.fromYMD(2025,7,11).millis());
 var vi63 = ee.Image.cat(img.select([62])).rename('vi').set(t,ee.Date.fromYMD(2025,7,19).millis());
-
-/*
-
 var vi64 = ee.Image.cat(img.select([63])).rename('vi').set(t,ee.Date.fromYMD(2025,7,27).millis());
 var vi65 = ee.Image.cat(img.select([64])).rename('vi').set(t,ee.Date.fromYMD(2025,8,4).millis());
+
+
+/*
 var vi66 = ee.Image.cat(img.select([65])).rename('vi').set(t,ee.Date.fromYMD(2025,8,12).millis());
 var vi67 = ee.Image.cat(img.select([66])).rename('vi').set(t,ee.Date.fromYMD(2025,8,20).millis());
 var vi68 = ee.Image.cat(img.select([67])).rename('vi').set(t,ee.Date.fromYMD(2025,8,28).millis());
@@ -481,10 +481,10 @@ vi21,vi22,vi23,vi24,vi25,vi26,vi27,vi28,vi29,vi30,
 vi31,vi32,vi33,vi34,vi35,vi36,vi37,vi38,vi39,vi40,
 vi41,vi42,vi43,vi44,vi45,vi46,vi47,vi48,vi49,vi50,
 vi51,vi52,vi53,vi54,vi55,vi56,vi57,vi58,vi59,vi60,
-vi61,vi62,vi63
+vi61,vi62,vi63,vi64,vi65
 
 /*
-,vi64,vi65,vi66,vi67,vi68,vi69,vi70,
+,vi66,vi67,vi68,vi69,vi70,
 vi71,vi72,vi73,vi74,vi75,vi76,vi77,vi78,vi79,vi80,
 vi81,vi82,vi83,vi84
 */
@@ -498,13 +498,13 @@ vi81,vi82,vi83,vi84
 
 // DATA AS SINGLE IMAGES
 
-var pace_oci_global_ndvi = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_01_ndvi_b63_4km"),
-    pace_oci_global_evi = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_02_evi_b63_4km"),
-    pace_oci_global_cci = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_05_cci_b63_4km"),
-    pace_oci_global_cire = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_07_cire_b63_4km"),
-    pace_oci_global_car = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_08_car_b63_4km"),
-    pace_oci_global_mari = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_09_mari_b63_4km"),
-    pace_oci_global_pri = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_10_pri_b63_4km");
+var pace_oci_global_ndvi = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_01_ndvi_b65_4km"),
+    pace_oci_global_evi = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_02_evi_b65_4km"),
+    pace_oci_global_cci = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_05_cci_b65_4km"),
+    pace_oci_global_cire = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_07_cire_b65_4km"),
+    pace_oci_global_car = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_08_car_b65_4km"),
+    pace_oci_global_mari = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_09_mari_b65_4km"),
+    pace_oci_global_pri = ee.Image("projects/bz-sdg/compil_imagery/hyperspectral/pace_oci_vi/8day_4km/vi_10_pri_b65_4km");
 
 pace_oci_global_ndvi = pace_oci_global_ndvi.updateMask(pace_oci_global_ndvi.gte(-10000));
 pace_oci_global_evi = pace_oci_global_evi.updateMask(pace_oci_global_evi.gte(-10000));
